@@ -14,81 +14,53 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <!-- Fondo -->
+<div id="particles"></div>
 
-    <div id="background"></div>
+<div id="intro">
 
-    <!-- Partículas -->
+    <div id="envelope">
 
-    <div id="particles"></div>
+        <div class="back"></div>
 
-    <!-- Sobre -->
+        <div class="letter-slot"></div>
 
-    <section id="intro">
+        <div class="front"></div>
 
-        <div id="envelope">
+        <div class="flap"></div>
 
-            <div class="lid"></div>
+    </div>
 
-            <div class="letter-preview"></div>
+    <h1>Tengo algo para ti.</h1>
 
-        </div>
+    <p>Haz clic sobre el sobre.</p>
 
-        <h1>Tengo algo para ti.</h1>
+</div>
 
-        <p>
-            Espero que esta pequeña carta
-            pueda sacarte una sonrisa.
-        </p>
+<section id="scene">
 
-        <button id="openButton">
+    <div id="letter">
 
-            Abrir carta
+        <img src="assets/lirio.png" id="lily">
 
-        </button>
+        <h2>Quería decirte algo...</h2>
 
-    </section>
+        <div id="text"></div>
 
-    <!-- Carta -->
+        <button id="finish">Gracias por leer 🤍</button>
 
-    <section id="letterSection">
+    </div>
 
-        <div id="letter">
+</section>
 
-            <img
-                src="assets/lirio.png"
-                id="lily"
-                alt="Lirio">
+<div id="petals"></div>
 
-            <h2>
-
-                Quería decirte algo...
-
-            </h2>
-
-            <div id="text"></div>
-
-            <button id="finish">
-
-                Gracias por leer 🤍
-
-            </button>
-
-        </div>
-
-    </section>
-
-    <!-- Pétalos -->
-
-    <div id="petals"></div>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 
