@@ -1,8 +1,26 @@
-// =============================
-// TEXTO DE LA CARTA
-// =============================
+// ===========================================
+// CARTA PARA ELLA
+// script.js
+// ===========================================
 
-const message = `Quería decirte algo.
+const envelope = document.getElementById("envelope");
+const flap = document.querySelector(".flap");
+
+const intro = document.getElementById("intro");
+
+const letter = document.getElementById("letter");
+
+const text = document.getElementById("text");
+
+const lily = document.getElementById("lily");
+
+const finish = document.getElementById("finish");
+
+const particles = document.getElementById("particles");
+
+const petals = document.getElementById("petals");
+
+const message = `Hay cosas que son más fáciles de escribir que de decir.
 
 Aunque no llevamos mucho tiempo hablando y todo ha sido de forma virtual, disfruto mucho compartir contigo. Entre conversaciones, risas y esos pequeños momentos, me he dado cuenta de que me gusta la persona que estoy empezando a conocer.
 
@@ -14,22 +32,16 @@ No espero que sientas lo mismo ahora, ni quiero que esta carta te haga sentir in
 
 Gracias por dedicar un poco de tu tiempo a leer esto. Pase lo que pase, espero que podamos seguir compartiendo esos pequeños momentos que hacen un poco más bonito el día.
 
-Con cariño, Angel (Your friendly neighbour Spiderman)🤍`;
+Con cariño.
 
-const intro = document.getElementById("intro");
-const letterSection = document.getElementById("letterSection");
-const text = document.getElementById("text");
-const openButton = document.getElementById("openButton");
-const finish = document.getElementById("finish");
-const lily = document.getElementById("lily");
-const lid = document.querySelector(".lid");
+Angel 🤍`;
 
 
-// =============================
+// ===========================================
 // PARTÍCULAS
-// =============================
+// ===========================================
 
-for(let i=0;i<35;i++){
+for(let i=0;i<40;i++){
 
     const p=document.createElement("div");
 
@@ -37,125 +49,119 @@ for(let i=0;i<35;i++){
 
     p.style.left=Math.random()*100+"vw";
 
-    p.style.animationDelay=Math.random()*10+"s";
+    p.style.animationDuration=(8+Math.random()*10)+"s";
 
-    p.style.animationDuration=8+Math.random()*8+"s";
+    p.style.animationDelay=(Math.random()*10)+"s";
 
     p.style.opacity=Math.random()*0.5;
 
-    document.getElementById("particles").appendChild(p);
+    particles.appendChild(p);
 
 }
 
 
-// =============================
-// ABRIR CARTA
-// =============================
+// ===========================================
+// ABRIR SOBRE
+// ===========================================
 
-openButton.onclick=()=>{
+envelope.addEventListener("click",()=>{
 
-    lid.style.transform="rotateX(180deg)";
+    envelope.style.pointerEvents="none";
+
+    flap.classList.add("open");
 
     setTimeout(()=>{
 
-        intro.style.opacity=0;
-        intro.style.pointerEvents="none";
+        intro.classList.add("hide");
 
     },800);
 
     setTimeout(()=>{
 
-        letterSection.style.opacity=1;
-        letterSection.style.pointerEvents="all";
+        letter.classList.add("show");
 
         typeWriter();
 
-    },1400);
+    },1200);
 
-}
+});
 
 
+// ===========================================
+// MAQUINA DE ESCRIBIR
+// ===========================================
 
-// =============================
-// EFECTO MAQUINA
-// =============================
-
-let i=0;
+let index=0;
 
 function typeWriter(){
 
-    if(i<message.length){
+    if(index<message.length){
 
-        text.innerHTML+=message.charAt(i);
+        text.innerHTML+=message.charAt(index);
 
-        i++;
+        letter.scrollTop=letter.scrollHeight;
 
-        setTimeout(typeWriter,28);
+        index++;
 
-    }else{
+        setTimeout(typeWriter,22);
+
+    }
+
+    else{
+
+        lily.classList.add("show");
 
         finish.style.display="block";
 
-        lily.style.opacity=.28;
+        finish.style.animation="fadeIn .8s";
 
     }
 
 }
 
 
-
-// =============================
+// ===========================================
 // BOTON FINAL
-// =============================
+// ===========================================
 
 finish.onclick=()=>{
 
-    createPetals();
+    finish.disabled=true;
 
-    finish.innerHTML="💜 Gracias por dedicarme un momento.";
+    finish.innerHTML="💜 Gracias por leer";
+
+    rainPetals();
 
 }
 
 
-
-// =============================
+// ===========================================
 // PETALOS
-// =============================
+// ===========================================
 
-function createPetals(){
+function rainPetals(){
 
-    for(let i=0;i<45;i++){
+    for(let i=0;i<60;i++){
 
         const petal=document.createElement("div");
 
-        petal.innerHTML="🌸";
+        petal.className="petal";
 
-        petal.style.position="fixed";
+        petal.innerHTML="🌸";
 
         petal.style.left=Math.random()*100+"vw";
 
-        petal.style.top="-50px";
+        petal.style.fontSize=(16+Math.random()*18)+"px";
 
-        petal.style.fontSize=(18+Math.random()*20)+"px";
+        petal.style.animationDuration=(4+Math.random()*4)+"s";
 
-        petal.style.opacity=Math.random();
-
-        petal.style.transition="transform 6s linear";
-
-        document.body.appendChild(petal);
-
-        setTimeout(()=>{
-
-            petal.style.transform=
-            `translate(${Math.random()*300-150}px,110vh) rotate(${Math.random()*700}deg)`;
-
-        },50);
+        petals.appendChild(petal);
 
         setTimeout(()=>{
 
             petal.remove();
 
-        },6500);
+        },8000);
 
     }
 
