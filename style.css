@@ -1,6 +1,8 @@
-/* ==========================
-   RESET
-========================== */
+/* =====================================================
+   CARTA PARA ELLA
+   style.css
+   Parte 1/3
+===================================================== */
 
 *{
     margin:0;
@@ -8,50 +10,42 @@
     box-sizing:border-box;
 }
 
-html,body{
+html,
+body{
+
     width:100%;
     height:100%;
+
 }
 
 body{
 
-    font-family:'Cormorant Garamond',serif;
-
-    background:linear-gradient(135deg,#ece2ff,#d8c5ff,#f4efff);
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
     overflow:hidden;
 
-}
+    font-family:'Cormorant Garamond',serif;
 
-/* ==========================
-   FONDO
-========================== */
-
-#background{
-
-    position:fixed;
-    inset:0;
-
-    background:
-    radial-gradient(circle at top,#ffffff55 0%,transparent 45%),
-    radial-gradient(circle at bottom,#ffffff22 0%,transparent 60%);
-
-    z-index:-3;
+    background:linear-gradient(
+        135deg,
+        #efe8ff 0%,
+        #e1d1ff 45%,
+        #d8c1ff 100%
+    );
 
 }
+
+/*==========================
+        PARTÍCULAS
+===========================*/
 
 #particles{
 
     position:fixed;
+
     inset:0;
+
     overflow:hidden;
-    z-index:-2;
+
+    z-index:-20;
 
 }
 
@@ -59,8 +53,9 @@ body{
 
     position:absolute;
 
-    width:6px;
-    height:6px;
+    width:5px;
+
+    height:5px;
 
     border-radius:50%;
 
@@ -68,79 +63,103 @@ body{
 
     opacity:.35;
 
-    animation:float linear infinite;
+    animation:particleFloat linear infinite;
 
 }
 
-@keyframes float{
+@keyframes particleFloat{
 
     from{
 
-        transform:translateY(100vh);
+        transform:translateY(105vh);
 
     }
 
     to{
 
-        transform:translateY(-120px);
+        transform:translateY(-100px);
 
     }
 
 }
 
-/* ==========================
-   INTRO
-========================== */
+/*==========================
+        INTRO
+===========================*/
 
 #intro{
 
-    text-align:center;
+    position:absolute;
 
-    transition:.8s;
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    transition:1s;
+
+}
+
+#intro.hide{
+
+    opacity:0;
+
+    pointer-events:none;
 
 }
 
 #intro h1{
 
-    font-family:'Parisienne',cursive;
-
-    color:#65548d;
+    margin-top:35px;
 
     font-size:3.2rem;
 
-    margin-top:30px;
+    color:#644c9f;
+
+    font-family:'Parisienne',cursive;
 
 }
 
 #intro p{
 
-    color:#5f5875;
+    margin-top:12px;
 
-    font-size:1.2rem;
+    font-size:1.15rem;
 
-    margin-top:15px;
+    color:#655f73;
 
 }
 
-/* ==========================
-   SOBRE
-========================== */
+/*==========================
+        SOBRE
+===========================*/
 
 #envelope{
 
-    width:240px;
-
-    height:160px;
-
     position:relative;
 
-    margin:auto;
+    width:260px;
+
+    height:180px;
+
+    cursor:pointer;
+
+    transition:.4s;
 
 }
 
-#envelope::before{
+#envelope:hover{
 
-    content:"";
+    transform:scale(1.04);
+
+}
+
+.back{
 
     position:absolute;
 
@@ -152,89 +171,83 @@ body{
 
     box-shadow:
 
-    0 25px 60px rgba(0,0,0,.15);
+    0 25px 55px rgba(0,0,0,.15);
 
 }
 
-.lid{
+.front{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:#ffffff;
+
+    clip-path:polygon(
+    0 100%,
+    50% 48%,
+    100% 100%);
+
+    z-index:5;
+
+}
+
+.flap{
 
     position:absolute;
 
     inset:0;
 
-    background:#f8f5ff;
+    background:#f7f3ff;
 
-    clip-path:polygon(0 0,100% 0,50% 58%);
+    clip-path:polygon(
+    0 0,
+    100% 0,
+    50% 62%
+    );
 
     transform-origin:top;
+
+    z-index:6;
 
     transition:1s;
 
 }
 
-.letter-preview{
+.flap.open{
+
+    transform:rotateX(180deg);
+
+}
+
+.letter-slot{
 
     position:absolute;
 
     width:84%;
 
-    height:100px;
-
-    background:#fffdf8;
+    height:115px;
 
     left:50%;
 
+    bottom:12px;
+
     transform:translateX(-50%);
 
-    bottom:12px;
+    background:#fffcf8;
 
     border-radius:8px;
 
 }
+/*==========================
+        ESCENA
+===========================*/
 
-/* ==========================
-   BOTÓN
-========================== */
-
-button{
-
-    margin-top:30px;
-
-    border:none;
-
-    background:#b998f7;
-
-    color:white;
-
-    border-radius:40px;
-
-    padding:15px 40px;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-    font-size:1rem;
-
-    box-shadow:
-
-    0 12px 30px rgba(150,120,230,.35);
-
-}
-
-button:hover{
-
-    transform:translateY(-4px);
-
-    background:#a77ef1;
-
-}
-
-/* ==========================
-   CARTA
-========================== */
-
-#letterSection{
+#scene{
 
     position:fixed;
 
@@ -246,51 +259,67 @@ button:hover{
 
     align-items:center;
 
-    opacity:0;
-
     pointer-events:none;
 
-    transition:1s;
-
 }
+
+/*==========================
+        CARTA
+===========================*/
 
 #letter{
 
     position:relative;
 
-    width:min(850px,92vw);
+    width:min(850px,90vw);
 
-    max-height:88vh;
+    max-height:85vh;
 
-    background:#fffdf8;
+    background:#fffdfb;
 
     border-radius:22px;
 
-    padding:60px;
+    box-shadow:
+        0 40px 90px rgba(0,0,0,.18);
+
+    padding:65px;
 
     overflow-y:auto;
-
     overflow-x:hidden;
 
-    box-shadow:
+    opacity:0;
 
-    0 30px 80px rgba(0,0,0,.18);
+    transform:
+        translateY(350px)
+        scale(.9);
+
+    transition:
+        transform 1.4s cubic-bezier(.22,1,.36,1),
+        opacity 1.2s;
+
+    pointer-events:none;
 
 }
 
-/* Scroll elegante */
+/* Carta visible */
+
+#letter.show{
+
+    opacity:1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    pointer-events:auto;
+
+}
+
+/* Scroll */
 
 #letter::-webkit-scrollbar{
 
     width:8px;
-
-}
-
-#letter::-webkit-scrollbar-thumb{
-
-    background:#b998f7;
-
-    border-radius:30px;
 
 }
 
@@ -300,9 +329,61 @@ button:hover{
 
 }
 
-/* ==========================
-   LIRIO
-========================== */
+#letter::-webkit-scrollbar-thumb{
+
+    background:#c4a9ff;
+
+    border-radius:20px;
+
+}
+
+#letter::-webkit-scrollbar-thumb:hover{
+
+    background:#af8ef5;
+
+}
+
+/*==========================
+        TITULO
+===========================*/
+
+#letter h2{
+
+    font-family:'Parisienne',cursive;
+
+    font-size:3.4rem;
+
+    color:#6d54a8;
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+/*==========================
+        TEXTO
+===========================*/
+
+#text{
+
+    color:#545454;
+
+    font-size:1.38rem;
+
+    line-height:2;
+
+    white-space:pre-wrap;
+
+    word-break:break-word;
+
+    min-height:180px;
+
+}
+
+/*==========================
+        LIRIO
+===========================*/
 
 #lily{
 
@@ -310,114 +391,287 @@ button:hover{
 
     right:-90px;
 
-    bottom:-60px;
+    bottom:-70px;
 
     width:360px;
 
-    opacity:.15;
+    opacity:0;
+
+    transform:
+        translateY(70px)
+        rotate(-10deg)
+        scale(.82);
+
+    transition:
+        opacity 2.2s,
+        transform 2.2s;
 
     pointer-events:none;
 
-    transition:2s;
+    user-select:none;
 
 }
 
-/* ==========================
-   TEXTO
-========================== */
+/* Florecer */
 
-#letter h2{
+#lily.show{
 
-    font-family:'Parisienne',cursive;
+    opacity:.22;
 
-    color:#7158b8;
-
-    text-align:center;
-
-    font-size:3.2rem;
-
-    margin-bottom:35px;
+    transform:
+        translateY(0)
+        rotate(0deg)
+        scale(1);
 
 }
 
-#text{
-
-    color:#555;
-
-    font-size:1.35rem;
-
-    line-height:2.1;
-
-    white-space:pre-wrap;
-
-    word-break:break-word;
-
-}
+/*==========================
+      BOTÓN FINAL
+===========================*/
 
 #finish{
 
     display:none;
 
-    margin:40px auto 0;
+    margin:45px auto 0;
+
+    padding:14px 36px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:#b792ff;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    transition:.35s;
+
+    box-shadow:
+        0 12px 28px rgba(128,93,214,.25);
 
 }
 
-/* ==========================
-   RESPONSIVE
-========================== */
+#finish:hover{
 
-@media(max-width:768px){
+    background:#a67cef;
 
-#letter{
+    transform:translateY(-3px);
 
-padding:35px;
+}
+/*=====================================================
+                PÉTALOS
+======================================================*/
 
-max-height:90vh;
+#petals{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:999;
 
 }
 
-#letter h2{
+.petal{
 
-font-size:2.4rem;
+    position:absolute;
 
-}
+    top:-40px;
 
-#text{
+    font-size:20px;
 
-font-size:1.12rem;
-
-line-height:1.9;
+    animation:fall linear forwards;
 
 }
 
-#intro h1{
+@keyframes fall{
 
-font-size:2.3rem;
+    from{
+
+        transform:
+            translateY(-40px)
+            rotate(0deg);
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:
+            translateY(110vh)
+            translateX(120px)
+            rotate(720deg);
+
+        opacity:0;
+
+    }
 
 }
 
-#intro p{
+/*=====================================================
+                ANIMACIONES
+======================================================*/
 
-font-size:1rem;
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
 
 }
 
-#lily{
+@keyframes floatEnvelope{
 
-width:230px;
+    0%{
 
-right:-50px;
+        transform:translateY(0px);
 
-bottom:-30px;
+    }
 
-opacity:.12;
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+#envelope{
+
+    animation:floatEnvelope 4s ease-in-out infinite;
+
+}
+
+/*=====================================================
+                RESPONSIVE
+======================================================*/
+
+@media(max-width:900px){
+
+    #letter{
+
+        width:92vw;
+
+        padding:40px;
+
+        max-height:90vh;
+
+    }
+
+    #letter h2{
+
+        font-size:2.6rem;
+
+    }
+
+    #text{
+
+        font-size:1.15rem;
+
+        line-height:1.9;
+
+    }
+
+    #lily{
+
+        width:250px;
+
+        right:-50px;
+
+        bottom:-40px;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    #intro h1{
+
+        font-size:2.2rem;
+
+    }
+
+    #intro p{
+
+        font-size:1rem;
+
+    }
+
+    #envelope{
+
+        width:210px;
+
+        height:150px;
+
+    }
+
+    #letter{
+
+        width:95vw;
+
+        padding:28px;
+
+        border-radius:16px;
+
+    }
+
+    #letter h2{
+
+        font-size:2.1rem;
+
+        margin-bottom:25px;
+
+    }
+
+    #text{
+
+        font-size:1.05rem;
+
+    }
+
+    #lily{
+
+        width:180px;
+
+        right:-35px;
+
+        bottom:-25px;
+
+        opacity:.15;
+
+    }
 
 }
 
 button{
 
-padding:13px 28px;
+    font-family:'Cormorant Garamond',serif;
 
-}
+    font-weight:600;
 
 }
