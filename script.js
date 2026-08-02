@@ -14,7 +14,7 @@ No espero que sientas lo mismo ahora, ni quiero que esta carta te haga sentir in
 
 Gracias por dedicar un poco de tu tiempo a leer esto. Pase lo que pase, espero que podamos seguir compartiendo esos pequeños momentos que hacen un poco más bonito el día.
 
-Con cariño. 🤍`;
+Con cariño, Angel (Your friendly neighbour Spiderman)🤍`;
 
 const intro = document.getElementById("intro");
 const letterSection = document.getElementById("letterSection");
