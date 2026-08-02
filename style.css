@@ -1,1 +1,401 @@
+/* ==========================
+   RESET
+========================== */
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Cormorant Garamond',serif;
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    background:linear-gradient(135deg,#e8dcff,#d7c4ff,#efe8ff);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+
+}
+
+/* ==========================
+   FONDO
+========================== */
+
+#background{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+        radial-gradient(circle at top,#ffffff55 0%,transparent 40%),
+        radial-gradient(circle at bottom,#ffffff22 0%,transparent 60%);
+
+    z-index:-3;
+
+}
+
+/* ==========================
+   PARTÍCULAS
+========================== */
+
+#particles{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-2;
+
+}
+
+.particle{
+
+    position:absolute;
+
+    width:5px;
+
+    height:5px;
+
+    border-radius:50%;
+
+    background:white;
+
+    opacity:.35;
+
+    animation:float 12s linear infinite;
+
+}
+
+@keyframes float{
+
+    from{
+
+        transform:translateY(100vh);
+
+    }
+
+    to{
+
+        transform:translateY(-120px);
+
+    }
+
+}
+
+/* ==========================
+   INTRO
+========================== */
+
+#intro{
+
+    text-align:center;
+
+    transition:.8s;
+
+}
+
+#intro h1{
+
+    margin-top:35px;
+
+    color:#534868;
+
+    font-size:3rem;
+
+    font-family:'Parisienne',cursive;
+
+}
+
+#intro p{
+
+    color:#5d5870;
+
+    font-size:1.2rem;
+
+    margin-top:15px;
+
+}
+
+/* ==========================
+   SOBRE
+========================== */
+
+#envelope{
+
+    width:230px;
+
+    height:150px;
+
+    margin:auto;
+
+    position:relative;
+
+    cursor:pointer;
+
+    transition:1s;
+
+}
+
+#envelope::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:white;
+
+    border-radius:10px;
+
+    box-shadow:
+
+    0 20px 40px rgba(0,0,0,.15);
+
+}
+
+.lid{
+
+    position:absolute;
+
+    width:100%;
+
+    height:100%;
+
+    background:#f8f5ff;
+
+    clip-path:polygon(0 0,100% 0,50% 60%);
+
+    transform-origin:top;
+
+    transition:1s;
+
+}
+
+.letter-preview{
+
+    position:absolute;
+
+    width:85%;
+
+    height:100px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    bottom:10px;
+
+    border-radius:6px;
+
+    background:#fffdf8;
+
+}
+
+/* ==========================
+   BOTÓN
+========================== */
+
+button{
+
+    border:none;
+
+    cursor:pointer;
+
+    margin-top:30px;
+
+    padding:14px 35px;
+
+    border-radius:50px;
+
+    background:#b895f7;
+
+    color:white;
+
+    font-size:1rem;
+
+    transition:.35s;
+
+    box-shadow:0 10px 25px rgba(145,105,220,.35);
+
+}
+
+button:hover{
+
+    background:#a77def;
+
+    transform:translateY(-3px);
+
+}
+
+/* ==========================
+   CARTA
+========================== */
+
+#letterSection{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:1s;
+
+}
+
+#letter{
+
+    position:relative;
+
+    width:min(800px,90vw);
+
+    background:#fffdf8;
+
+    border-radius:20px;
+
+    padding:70px;
+
+    box-shadow:
+
+    0 30px 70px rgba(0,0,0,.15);
+
+    overflow:hidden;
+
+}
+
+/* ==========================
+   LIRIO
+========================== */
+
+#lily{
+
+    position:absolute;
+
+    right:-80px;
+
+    bottom:-60px;
+
+    width:340px;
+
+    opacity:.18;
+
+    transition:2s;
+
+    user-select:none;
+
+    pointer-events:none;
+
+}
+
+/* ==========================
+   TEXTO
+========================== */
+
+#letter h2{
+
+    font-family:'Parisienne',cursive;
+
+    color:#6c54a4;
+
+    text-align:center;
+
+    font-size:3rem;
+
+    margin-bottom:35px;
+
+}
+
+#text{
+
+    color:#555;
+
+    line-height:2;
+
+    font-size:1.35rem;
+
+    white-space:pre-line;
+
+    min-height:260px;
+
+}
+
+#finish{
+
+    display:none;
+
+    margin:auto;
+
+    margin-top:40px;
+
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:768px){
+
+#letter{
+
+padding:35px;
+
+}
+
+#letter h2{
+
+font-size:2.3rem;
+
+}
+
+#text{
+
+font-size:1.1rem;
+
+}
+
+#lily{
+
+width:230px;
+
+right:-60px;
+
+bottom:-50px;
+
+opacity:.15;
+
+}
+
+#intro h1{
+
+font-size:2.3rem;
+
+}
+
+}
